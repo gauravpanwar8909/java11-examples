@@ -2,27 +2,19 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3'   // Make sure Maven3 is configured in Jenkins
+        maven 'Maven3'
     }
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/gauravpanwar8909/java11-examples.git'
-            }
-        }
-
-        stage('Packaging') {
+        stage('Build') {
             steps {
                 bat 'mvn clean package'
             }
         }
 
-        stage('Archiving') {
+        stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
     }
