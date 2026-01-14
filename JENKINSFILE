@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage ('checkout') {
+            steps {
+                bat 'echo hello'
+            }
+        }
+        stage ('testing') {
+            steps {
+                bat 'echo testing'
+            }
+        }
+        stage ('deploying') {
+            steps {
+                bat 'echo deploying'
+            }
+        }
+    }
+}
